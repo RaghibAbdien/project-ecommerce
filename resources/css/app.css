@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .link{
+        @apply hover:border-b-2 border-gray-600 hover:font-bold pb-1;
+    }
+
+    .category{
+        @apply font-bold hover:bg-black hover:text-white hover:rounded hover:p-1 hover:m-0 transition ease-in-out duration-500; 
+    }
+
+    .btn-slide{
+        @apply w-3 h-3 rounded-full bg-gray-300 cursor-pointer relative bottom-36;
+    }
+
+    .titik2{
+        @apply text-xl mt-5 text-orange-600 font-bold;
+    }
+
+    .box-angka{
+        @apply flex flex-col items-center;
+    }
+}
