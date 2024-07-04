@@ -22,4 +22,32 @@
     .box-angka{
         @apply flex flex-col items-center;
     }
+
+    .divider{
+        @apply w-full border-b-2 border-gray-200 pt-10;
+    }
+
+    .kotak{
+        @apply block w-4 h-10 rounded-sm bg-red-500;
+    }
+
+    .text-title{
+        @apply text-red-500 font-bold mt-2 ml-3
+    }
+
+    .text-header{
+        @apply text-5xl font-semibold tracking-wider;
+    }
+
+    .card-category{
+        @apply w-48 h-44 border-2 border-gray-300 flex flex-col justify-center items-center gap-3 cursor-pointer hover:bg-red-500;
+    }
+
+    .circle-time{
+        @apply flex flex-col gap-0 items-center px-4 py-3 bg-white rounded-full max-w-max;
+    }
+
+    .service{
+        @apply max-w-max border-8 border-gray-400 p-1 bg-black rounded-full flex items-center justify-center;
+    }
 }

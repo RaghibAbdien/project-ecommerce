@@ -7,3 +7,71 @@
 input:focus{
     border: none;
 }
+
+#jumbotron{
+    background: url('../img/bg-advertise.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#card-container{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(4,auto);
+    grid-row-gap: 2rem;
+}
+
+#adv-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 100px);
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.menu1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 6;
+    background-color: lightblue;
+}
+
+.menu2 {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 3;
+    background-color: lightcoral;
+}
+
+.menu3 {
+    grid-column: 3 / span 1;
+    grid-row: 4 / span 3;
+    background-color: lightgreen;
+}
+
+.menu4 {
+    grid-column: 4 / span 1;
+    grid-row: 4 / span 3;
+    background-color: lightgoldenrodyellow;
+}
+
+#adv-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#input-email{
+    width: 150px;
+    height: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    outline: none;
+}

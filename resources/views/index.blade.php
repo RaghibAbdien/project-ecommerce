@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   @vite('resources/css/app.css')
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <title>Landing</title>
 </head>
 <body class="overflow-x-hidden">
     <header>
-        <nav class="w-full flex justify-evenly items-center py-3 border-b-2">
+        <nav class="bg-white w-full flex justify-evenly items-center py-3 border-b-2 fixed z-50">
             <div class="w-24">
                 <a href=""><img src="assets/img/logo-brand.png" alt=""></a>
             </div>
@@ -66,7 +67,7 @@
         </nav>
     </header>
 
-    <main class="flex">
+    <main class="flex pt-16">
         <aside>
             <div class="w-max border-r-2 pl-16 pr-32">
                 <ul class="w-max flex flex-col gap-5 pt-5 pl-4">
@@ -83,7 +84,7 @@
             </div>
         </aside>
         
-        <section id="default-carousel" class="relative w-full m-5" data-carousel="slide">
+        <section id="default-carousel" class="relative w-full m-5 -z-10" data-carousel="slide">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                 <!-- Item 1 -->
@@ -134,303 +135,617 @@
 
     </main>
 
-    <section class="ml-20 my-20">
+    <section class="mx-20 my-20">
         <div class="flex">
-            <div class="block w-4 h-10 rounded-sm bg-red-500"></div>
-            <span class="text-red-500 font-bold mt-2 ml-3">Today's</span>
+            <div class="kotak"></div>
+            <span class="text-title">Today's</span>
         </div>
-        <div class="flex gap-24 items-center">
-            <span class="text-5xl font-semibold tracking-wider">Flash Sales</span>
-            <div class="flex gap-6">
-                <div class="box-angka">
-                    <span class="text-sm font-semibold">Days</span>
-                    <span id="days" class="text-4xl font-semibold"></span>
+        <div class="flex gap-24 items-center justify-between">
+            <div class="flex items-center ">
+                <span class="text-header">Flash Sales</span>
+                <div class="flex gap-6 ml-16 mb-4">
+                    <div class="box-angka">
+                        <span class="text-sm font-semibold">Days</span>
+                        <span id="days" class="text-4xl font-semibold"></span>
+                    </div>
+                    <span class="titik2">:</span>
+                    <div class="box-angka">
+                        <span class="text-sm font-semibold">Hours</span>
+                        <span id="hours" class="text-4xl font-semibold"></span>
+                    </div>
+                    <span class="titik2">:</span>
+                    <div class="box-angka">
+                        <span class="text-sm font-semibold">Minutes</span>
+                        <span id="minutes" class="text-4xl font-semibold"></span>
+                    </div>
+                    <span class="titik2">:</span>
+                    <div class="box-angka">
+                        <span class="text-sm font-semibold">Seconds</span>
+                        <span id="seconds" class="text-4xl font-semibold"></span>
+                    </div>
                 </div>
-                <span class="titik2">:</span>
-                <div class="box-angka">
-                    <span class="text-sm font-semibold">Hours</span>
-                    <span id="hours" class="text-4xl font-semibold"></span>
-                </div>
-                <span class="titik2">:</span>
-                <div class="box-angka">
-                    <span class="text-sm font-semibold">Minutes</span>
-                    <span id="minutes" class="text-4xl font-semibold"></span>
-                </div>
-                <span class="titik2">:</span>
-                <div class="box-angka">
-                    <span class="text-sm font-semibold">Seconds</span>
-                    <span id="seconds" class="text-4xl font-semibold"></span>
-                </div>
+            </div>
+            <!-- Add Navigation -->
+            <div class="flex justify-end gap-3 ml-10 my-auto">
+                <button id="tmbl-prev"><i class="fa-solid fa-circle-chevron-left fa-2xl text-gray-300"></i></button>
+                <button id="tmbl-next"><i class="fa-solid fa-circle-chevron-right fa-2xl text-gray-300"></i></button>
             </div>
         </div>
-        <div class="inline-flex gap-3 mt-5">
-            {{-- Card --}}
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+        <div class="container py-8">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 1</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
-                </div>
-
-            </div>
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
-                </div>
-
-            </div>
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
-                </div>
-
-            </div>
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
-                </div>
-
-            </div>
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
-                </div>
-
-            </div>
-            <div class="w-60 h-80">
-                <div class="absolute z-30 flex flex-col gap-3 mx-3 my-3">
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                    </button>
-                    <button class="bg-white p-1 rounded-full">
-                        <i class="fa-regular fa-eye text-xl"></i>
-                    </button>
-                </div>
-                <div class="w-full h-2/3">
-                    <img src="assets/img/produk7.jpeg" class="w-full h-full rounded-t-lg" alt="">
-                </div>
-                <div class="flex flex-col gap-1 mt-3 mx-2">
-                    <div>
-                        <span class="font-bold text-2xl">Produk 1</span>
-                    </div>
-                    <div>
-                        <span class="text-red-500 font-semibold">$120</span>
-                        <span class="line-through text-gray-600 font-bold">$140</span>
-                    </div>
-                    <div class="inline-flex gap-3 mt-1">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                            </svg>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
                         </div>
-                        <span class="font-bold text-gray-600">(96)</span>
                     </div>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                            <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2">Card Title 2</div>
+                                <p class="text-gray-700 text-base">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more slides as needed -->
                 </div>
-
+                
             </div>
         </div>
         <div class="w-full flex items-center justify-center mt-5">
-            <button class="bg-red-500 p-3 rounded-lg text-white font-bold hover:bg-red-600">View All Products</button>
+            <button class="bg-red-500 p-3 rounded-sm text-white font-bold hover:bg-red-600">View All Products</button>
+        </div>
+        <div class="divider"></div>
+    </section>
+
+    <section class="mx-20 my-20">
+        <div class="flex">
+            <div class="kotak"></div>
+            <span class="text-title">Categories</span>
+        </div>
+        <div class="flex justify-between mt-5">
+            <span class="text-header">Browse By Category</span>
+            <!-- Add Navigation -->
+            <div class="flex justify-end gap-3 ml-10 my-auto">
+                <button id="tmbl-prev-1"><i class="fa-solid fa-circle-chevron-left fa-2xl text-gray-300"></i></button>
+                <button id="tmbl-next-1"><i class="fa-solid fa-circle-chevron-right fa-2xl text-gray-300"></i></button>
+            </div>
+        </div>
+        <div class="container py-8">
+            <div class="swiper-container swiper-container-1 flex items-center justify-center">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/mobile-button.png" alt="">
+                            <span class="font-semibold">Phones</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/screen.png" alt="">
+                            <span class="font-semibold">Computers</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/watch-smart.png" alt="">
+                            <span class="font-semibold">Smartwatchs</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/camera.png" alt="">
+                            <span class="font-semibold">Cameras</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/headphones.png" alt="">
+                            <span class="font-semibold">Headphones</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/game-controller.png" alt="">
+                            <span class="font-semibold">Gamings</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card-category">
+                            <img src="assets/img/storage-box.png" alt="">
+                            <span class="font-semibold">Toys</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </section>
+
+    <section class="mx-20 my-20">
+        <div class="flex">
+            <div class="kotak"></div>
+            <span class="text-title">This Month</span>
+        </div>
+        <div class="flex justify-between mt-5">
+            <span class="text-header">Best Selling Products</span>
+            <button class="bg-red-500 px-12 rounded-sm text-white font-bold hover:bg-red-600">View All</button>
+        </div>
+        <div class="container">
+            <div class="py-16">
+                <div id="card-container">
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section id="jumbotron" class="mx-20 h-screen">
+        <div class="max-w-screen py-20 px-16 flex flex-col gap-12">
+            <div>
+                <span class="font-semibold text-3xl text-black">Categories</span>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h2 class="text-6xl font-bold text-white drop-shadow-lg">Enhance Your</h2>
+                <h2 class="text-6xl font-bold text-white drop-shadow-lg">Music Experience</h2>
+            </div>
+            <div class="flex gap-5">
+                <div class="circle-time px-5">
+                    <span id="days2" class="font-semibold text-lg">05</span>
+                    <span class="font-semibold">Days</span>
+                </div>
+                <div class="circle-time">
+                    <span id="hours2" class="font-semibold text-lg">23</span>
+                    <span class="font-semibold">Hours</span>
+                </div>
+                <div class="circle-time px-2">
+                    <span id="minutes2" class="font-semibold text-lg">38</span>
+                    <span class="font-semibold">Minutes</span>
+                </div>
+                <div class="circle-time px-2">
+                    <span id="seconds2" class="font-semibold text-lg">42</span>
+                    <span class="font-semibold">Seconds</span>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button class="bg-black px-14 py-4 text-white font-semibold rounded-md hover:bg-gray-900">Buy Now!</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="mx-20 my-20">
+        <div class="flex">
+            <div class="kotak"></div>
+            <span class="text-title">Our Product</span>
+        </div>
+        <div class="flex justify-between mt-5">
+            <span class="text-header">Explore Our Products</span>
+            <!-- Add Navigation -->
+            <div class="flex justify-end gap-3 ml-10 my-auto">
+                <button id="tmbl-prev-1"><i class="fa-solid fa-circle-chevron-left fa-2xl text-gray-300"></i></button>
+                <button id="tmbl-next-1"><i class="fa-solid fa-circle-chevron-right fa-2xl text-gray-300"></i></button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="py-16">
+                <div id="card-container">
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-64 rounded overflow-hidden shadow-lg bg-white">
+                        <div class="absolute flex flex-col gap-4 py-3 pl-3">
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-heart fa-lg"></i></button>
+                            <button class="bg-white p-1 rounded-full"><i class="fa-regular fa-eye fa-lg"></i></button>
+                        </div>
+                        <img class="w-full" src="https://via.placeholder.com/400" alt="Placeholder Image">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Card Title 2</div>
+                            <p class="text-gray-700 text-base">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-20">
+        <div class="flex">
+            <div class="kotak"></div>
+            <span class="text-title">Our Product</span>
+        </div>
+        <div class="mt-5">
+            <span class="text-header">New Arrival</span>
+        </div>
+        <div id="adv-container">
+            <div class="menu menu1">
+                <img id="adv-img" src="https://via.placeholder.com/400x600" alt="Menu 1">
+            </div>
+            <div class="menu menu2">
+                <img id="adv-img" src="https://via.placeholder.com/400x300" alt="Menu 2">
+            </div>
+            <div class="menu menu3">
+                <img id="adv-img" src="https://via.placeholder.com/200x300" alt="Menu 3">
+            </div>
+            <div class="menu menu4">
+                <img id="adv-img" src="https://via.placeholder.com/200x300" alt="Menu 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="mx-24 py-20">
+        <div class="flex flex-row items-center justify-around">
+            <div class="flex flex-col items-center justify-center gap-3">
+                <div class="service">
+                    <img src="assets/img/delivery-truck.png" alt="">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1">
+                    <span class="font-bold text-lg">FREE AND FAST DELIVERY</span>
+                    <span>Free delivery for all orders over 140$</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-3">
+                <div class="service">
+                    <img src="assets/img/customer-service.png" alt="">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1">
+                    <span class="font-bold text-lg">24/7 CUSTOMER SERVICE</span>
+                    <span>Friendly 24/7 customer support</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-3">
+                <div class="service">
+                    <img src="assets/img/check.png" alt="">
+                </div>
+                <div class="flex flex-col items-center justify-center gap-1">
+                    <span class="font-bold text-lg">MONEY BACK GUARANTEE</span>
+                    <span>We return money within 30 days</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black">
+        <div class="mx-10 flex flex-row items-start justify-around py-10">
+            <div class="flex flex-col">
+                <span class="text-white font-bold">Exclusive</span>
+                <div class="flex flex-col mt-2 gap-1">
+                    <span class="text-white">Subscribe</span>
+                    <span class="text-white text-sm">Get 10% off your first order</span>
+                    <div class="max-w-max px-2 py-1 flex items-center justify-start border-2 border-gray-400 rounded-md">
+                        <input id="input-email" type="text" placeholder="Enter your email">
+                        <button><img src="assets/img/message.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-white">Support</span>
+                <div class="flex flex-col gap-1 mt-2">
+                    <span class="text-white w-36">Jln. Agus Salim no. 16, Indonesia</span>
+                    <span class="text-white">agussalim@gmail.com</span>
+                    <span class="text-white">+62 984 2901 2901</span>
+                </div>
+            </div>
+            <div class="text-white">
+                <span class="text-white">Account</span>
+                <div class="mt-2">
+                    <ul class="gap-1">
+                        <li><a href="">My Account</a></li>
+                        <li><a href="">Login / Register</a></li>
+                        <li><a href="">Cart</a></li>
+                        <li><a href="">Wishlist</a></li>
+                        <li><a href="">Shop</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-white">
+                <span class="text-white">Quick Link</span>
+                <div class="mt-2">
+                    <ul>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms Of Use</a></li>
+                        <li><a href="">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-white">Download App</span>
+                <div class="mt-2">
+                    <span class="text-gray-400 text-sm">Save $3 with App New User Only</span>
+                    <div class="flex flex-row">
+                        <img src="assets/img/qr-code.jpeg" alt="">
+                        <div class="flex flex-col gap-3">
+                            <img class="w-28 h-14" src="assets/img/btn-appstore.png" alt="">
+                            <img class="w-28 h-14" src="assets/img/btn-googleplay.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full flex items-center justify-center py-2 border-t-2 border-gray-700">
+            <span class="text-gray-300 font-semibold">Copyright Reux 2022. All right reserved</span>
+        </div>
+    </footer>
 </body>
 
 <script src="assets/js/script.js"></script>
 <script src="https://kit.fontawesome.com/91441035a6.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop:true,
+        navigation: {
+            nextEl: '#tmbl-next',
+            prevEl: '#tmbl-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+        }
+    });
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container-1', {
+        slidesPerView: 10 ,
+        spaceBetween: 10,
+        loop:true,
+        navigation: {
+            nextEl: '#tmbl-next-1',
+            prevEl: '#tmbl-prev-1',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+        }
+    });
+</script>
 </html>
