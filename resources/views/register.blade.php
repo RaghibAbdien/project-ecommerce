@@ -45,6 +45,7 @@
                     <div class="my-10 w-full flex flex-col gap-4 items-center justify-center">
                         <button type="submit" class="bg-red-500 py-3 px-20 font-sans font-medium rounded-sm text-white hover:bg-red-600">Create Account</button>
                         <button type="submit" class="border-2 border-gray-400 py-3 px-10 font-sans font-medium rounded-sm flex flex-row gap-3 items-center justify-center text-gray-500 text-base hover:text-black hover:border-gray-700"><img class="w-6" src="assets/img/google.png" alt="">Sign Up with Google</button>
+                        <span class="text-sm font-sans font-semibold text-gray-500">Already have account? <a class="hover:text-black hover:border-b-2 hover:border-black hover:pb-1" href="">Log in</a></span>
                     </div>
                 </form>
             </div>
