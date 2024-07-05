@@ -16,6 +16,11 @@
         input{
             width: 100%;
             outline: none;
+            transition: ease-in-out 400ms;
+        }
+
+        input:focus{
+            border-bottom: 2px solid #292929;
         }
     </style>
 </head>
@@ -32,15 +37,9 @@
                         <span class="font-semibold font-sans">Enter your details below</span>
                     </div>
                     <div class="flex flex-col mt-8 gap-8">
-                        <div class="border-b-2 border-gray-300 pb-1">
-                            <input type="text" placeholder="Name">
-                        </div>
-                        <div class="border-b-2 border-gray-300 pb-1">
-                            <input type="text" placeholder="Email or Phone Number">
-                        </div>
-                        <div class="border-b-2 border-gray-300 pb-1">
-                            <input type="password" placeholder="Password">
-                        </div>
+                        <input class="border-b-2 border-gray-300 pb-2" type="text" placeholder="Name">
+                        <input class="border-b-2 border-gray-300 pb-2" type="text" placeholder="Email or Phone Number">
+                        <input class="border-b-2 border-gray-300 pb-2" type="password" placeholder="Password">
                     </div>
                     <div class="my-10 w-full flex flex-col gap-4 items-center justify-center">
                         <button type="submit" class="bg-red-500 py-3 px-20 font-sans font-medium rounded-sm text-white hover:bg-red-600">Create Account</button>
