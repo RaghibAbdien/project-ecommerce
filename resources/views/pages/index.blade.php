@@ -1,72 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="assets/img/logo-brand.png" type="image/x-icon">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  @vite('resources/css/app.css')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <title>Landing</title>
-</head>
-<body class="overflow-x-hidden">
-    <header>
-        <nav class="bg-white w-full flex justify-evenly items-center py-3 border-b-2 fixed z-50">
-            <div class="w-24">
-                <a href=""><img src="assets/img/logo-brand.png" alt=""></a>
-            </div>
-            <ul class="flex gap-10">
-                <li><a href="" class="link">Home</a></li>
-                <li><a href="" class="link">Contact</a></li>
-                <li><a href="" class="link">About</a></li>
-                <li><a href="" class="link">Sign Up</a></li>
-            </ul>
-            <div class="flex gap-6">
-                
-                <form class="max-w-sm mx-auto">   
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
-                        <input type="search" id="default-search" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Cari disini.." />
-                    </div>
-                </form>
+@extends('layout.main')
 
-                <div class="flex gap-4 items-center">
-                    <a href=""><i class="fa-regular fa-heart text-2xl hover:text-red-600"></i></a>
-                    <a href=""><i class="fa-solid fa-cart-shopping text-2xl hover:text-gray-400"></i></a>
-                    <button type="button" id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"><i class="fa-solid fa-circle-user text-2xl hover:text-gray-400"></i></button>
-                </div>
+@section('title', 'Landing Page')
 
-                {{-- Dropdown User --}}
-                <div id="dropdownAvatar" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                      <div>Bonnie Green</div>
-                      <div class="font-medium truncate">name@flowbite.com</div>
-                    </div>
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
-                      <li>
-                        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-black hover:text-white"><i class="fa-solid fa-user-gear"></i>My Account</a>
-                      </li>
-                      <li>
-                        <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-black hover:text-white"><i class="fa-solid fa-bag-shopping"></i>My Order</a>
-                      </li>
-                      <li>
-                        <a href="#" class="flex items-center gap-3 px-4 py-2 hover:bg-black hover:text-white"><i class="fa-solid fa-shop"></i>My Shop</a>
-                      </li>
-                    </ul>
-                    <div class="py-2">
-                      <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-black hover:text-white"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+@section('content')
 
+    @push('head')
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    @endpush
+    
     <main class="flex pt-16">
         <aside>
             <div class="w-max border-r-2 pl-16 pr-32">
@@ -631,121 +572,57 @@
         </div>
     </section>
 
-    <footer class="bg-black">
-        <div class="mx-10 flex flex-row items-start justify-around py-10">
-            <div class="flex flex-col">
-                <span class="text-white font-bold">Exclusive</span>
-                <div class="flex flex-col mt-2 gap-1">
-                    <span class="text-white">Subscribe</span>
-                    <span class="text-white text-sm">Get 10% off your first order</span>
-                    <div class="max-w-max px-2 py-1 flex items-center justify-start border-2 border-gray-400 rounded-md">
-                        <input id="input-email" type="text" placeholder="Enter your email">
-                        <button><img src="assets/img/message.png" alt=""></button>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-white">Support</span>
-                <div class="flex flex-col gap-1 mt-2">
-                    <span class="text-white w-36">Jln. Agus Salim no. 16, Indonesia</span>
-                    <span class="text-white">agussalim@gmail.com</span>
-                    <span class="text-white">+62 984 2901 2901</span>
-                </div>
-            </div>
-            <div class="text-white">
-                <span class="text-white">Account</span>
-                <div class="mt-2">
-                    <ul class="gap-1">
-                        <li><a href="">My Account</a></li>
-                        <li><a href="">Login / Register</a></li>
-                        <li><a href="">Cart</a></li>
-                        <li><a href="">Wishlist</a></li>
-                        <li><a href="">Shop</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-white">
-                <span class="text-white">Quick Link</span>
-                <div class="mt-2">
-                    <ul>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Terms Of Use</a></li>
-                        <li><a href="">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-white">Download App</span>
-                <div class="mt-2">
-                    <span class="text-gray-400 text-sm">Save $3 with App New User Only</span>
-                    <div class="flex flex-row">
-                        <img src="assets/img/qr-code.jpeg" alt="">
-                        <div class="flex flex-col gap-3">
-                            <img class="w-28 h-14" src="assets/img/btn-appstore.png" alt="">
-                            <img class="w-28 h-14" src="assets/img/btn-googleplay.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-full flex items-center justify-center py-2 border-t-2 border-gray-700">
-            <span class="text-gray-300 font-semibold">Copyright Reux 2022. All right reserved</span>
-        </div>
-    </footer>
-</body>
-
-<script src="assets/js/script.js"></script>
-<script src="https://kit.fontawesome.com/91441035a6.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        loop:true,
-        navigation: {
-            nextEl: '#tmbl-next',
-            prevEl: '#tmbl-prev',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-        }
-    });
-</script>
-<script>
-    var swiper = new Swiper('.swiper-container-1', {
-        slidesPerView: 10 ,
-        spaceBetween: 10,
-        loop:true,
-        navigation: {
-            nextEl: '#tmbl-next-1',
-            prevEl: '#tmbl-prev-1',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-        }
-    });
-</script>
-</html>
+    @push('js')
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                loop:true,
+                navigation: {
+                    nextEl: '#tmbl-next',
+                    prevEl: '#tmbl-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        </script>
+        <script>
+            var swiper = new Swiper('.swiper-container-1', {
+                slidesPerView: 10 ,
+                spaceBetween: 10,
+                loop:true,
+                navigation: {
+                    nextEl: '#tmbl-next-1',
+                    prevEl: '#tmbl-prev-1',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        </script>
+    @endpush
+@endsection
