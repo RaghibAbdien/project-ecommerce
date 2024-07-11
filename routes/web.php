@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/wishlist', function () {
+    return view('pages.wishlist');
+});
+
 Route::get('/register', function () {
     return view('auth.register');
 });
